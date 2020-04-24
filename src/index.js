@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 import "assets/scss/material-kit-react.scss?v=1.8.0";
 
@@ -11,6 +11,9 @@ import LandingPage from "views/LandingPage/LandingPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 
+import MainPage from "views/MainPage/MainPage.js";
+import CalendarPage from "views/MainPage/CalendarPage.js";
+
 var hist = createBrowserHistory();
 
 ReactDOM.render(
@@ -19,7 +22,11 @@ ReactDOM.render(
       <Route path="/landing-page" component={LandingPage} />
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
-      <Route path="/" component={Components} />
+      <Route path="/components" component={Components} />
+
+      <Route path="/main" component={MainPage} />
+      <Route path="/cal" render={(props) => <CalendarPage {...props} set={false}/>}/>
+      <Redirect from="/" to="/main" />
     </Switch>
   </Router>,
   document.getElementById("root")
