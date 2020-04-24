@@ -1,47 +1,59 @@
-import {Redirect} from "react-router-dom";
 import React, {useState, useEffect} from "react";// @material-ui/core components
+import {Redirect} from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
-
-// @material-ui/icons
-
-// core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Small from "components/Typography/Small.js";
-import Danger from "components/Typography/Danger.js";
-import Warning from "components/Typography/Warning.js";
-import Success from "components/Typography/Success.js";
-import Info from "components/Typography/Info.js";
-import Primary from "components/Typography/Primary.js";
-import Muted from "components/Typography/Muted.js";
-import Quote from "components/Typography/Quote.js";
-
-import image from "assets/img/faces/avatar.jpg";
-
 import styles from "assets/jss/material-kit-react/views/componentsSections/typographyStyle.js";
 
-import {getAllRoomData} from "./ExternalHandler.js";
+//related imports
+import Booking from './Booking.js';
+import {getAllRoomData, getSearchResults, intToTime } from "./ExternalHandler.js";
 
 
 const useStyles = makeStyles(styles);
 
-export default function RoomList() {
+/*
+  Room list component: can display list of rooms OR list of possible timeslots
+
+  To display list of rooms: set props.full to true
+  To display list of slots: set props.date and props.duration
+*/
+export default function RoomList(props) {
   const classes = useStyles();
   //hold room data
   const [data, setData] = useState({});
-  useEffect(() => {
-    getAllRoomData().then(data => setData(data));
-  }, []);
+  const [titles, setTitles] = useState(["",""]);
+  
 
+  //Get data from correct API
+  useEffect(() => {
+    if(props.full){
+      getAllRoomData().then(data => setData(data));
+      setTitles(["Full Room List:","Click to view room calendar."]);
+    } else {
+      getSearchResults(props.date, props.duration).then(data => setData(data));
+      setTitles(["Search results:","Click to book."]);
+    }
+  }, [props]);
+
+
+  //Render data
   let i;
   let entries = [];
-
-  for(i=0;i<data.length;i++){
-    entries.push(<RoomEntry id={data[i]['name']} data={data[i]} />);
-    entries.push(<hr style={{color: '#000000',backgroundColor: '#000000',height: .5}} />);
+  if(props.full){
+    //if full list is required, push RoomEntry
+    for(i=0;i<data.length;i++){
+      entries.push(<RoomEntry id={data[i]['roomName']} data={data[i]} />);
+      entries.push(<hr style={{color: '#000000',backgroundColor: '#000000',height: .5}} />);
+    }  
+  } else {
+    //if search result is required, push RoomTimeEntry
+    for(i=0;i<data.length;i++){
+      entries.push(<RoomTimeEntry id={i} data={data[i]} date={props.date} />);
+      entries.push(<hr style={{color: '#000000',backgroundColor: '#000000',height: .5}} />);
+    }  
   }
-
-
 
   return (
       <div className={classes.section}>
@@ -49,8 +61,8 @@ export default function RoomList() {
           <div className={classes.space50} />
           <div id="images">
             <div className={classes.title} >
-              <h2>Room list:</h2>
-              <h3><i>Click to view room calendar.</i></h3>
+              <h2>{titles[0]}</h2>
+              <h3><i>{titles[1]}</i></h3>
             </div>
             {entries}
           </div>
@@ -59,25 +71,60 @@ export default function RoomList() {
   );
 }
 
-//props to supply: id and individual data
+
+// Timeslot entry
+// props.data has room_name, start, end
+function RoomTimeEntry(props){
+  //activates booking slip if clicked
+  const [book, setBook] = useState([]);
+
+  //Read in props 
+  let roomName = props.data['roomName'];
+  let start = props.data['start'];
+  let end = props.data['end'];
+
+  //if any change to props
+  useEffect(() => {
+    setBook([]);
+  }, [props]);
+
+  function clicked(){
+    setBook(<Booking roomName={roomName} date={props.date} start={start} end={end}/>);
+  }
+  return (
+    <GridContainer style={{margin: '50px 0px 50px 0px', cursor: 'pointer'}} onClick={clicked}>
+      <GridItem xs={12} sm={3}>
+        <h3><b>{roomName}</b></h3>
+      </GridItem>
+      <GridItem xs={12} sm={3}><h3><b>{intToTime(start)}</b></h3></GridItem>
+      <GridItem xs={12} sm={3}><h3>to</h3></GridItem>
+      <GridItem xs={12} sm={3}><h3><b>{intToTime(end)}</b></h3></GridItem>
+      {book}
+    </GridContainer>
+  );
+}
+
+// for full list: 
+// props.data has name, booked(bool), end
 function RoomEntry(props){
+  const [redirect, setRedirect] = useState(false);
+
   let b = [];
   let text = [];
   if(!props.data['booked']){
-    text.push(<h3>Available</h3>);
+    text.push(<h3>Available Now</h3>);
   } else {
     text.push(<h3>Room in use</h3>);
   }
-  const [redirect, setRedirect] = useState(false);
 
   if(redirect){
-    return(<Redirect to={{ pathname: '/cal', state:{name: props.data.name, date: ""}}} />);
+    return(<Redirect to={{ pathname: '/cal', state:{roomName: props.data['roomName'], date: ""}}} />);
   };
 
   return (
     <GridContainer style={{margin: '50px 0px 50px 0px', cursor: 'pointer'}} onClick={(e) => setRedirect(true)}>
       <GridItem xs={12} sm={3}>
-        <h3><b>{props.data['name']}</b></h3>
+        <h3><b>{props.data['roomName']}</b></h3>
       </GridItem>
       <GridItem xs={12} sm={6}>{text}</GridItem>
       <GridItem xs={12} sm={3}>{b}</GridItem>
