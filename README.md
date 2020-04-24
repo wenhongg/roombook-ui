@@ -1,8 +1,8 @@
-# ROOMBOOK UI
+# Room booking UI
 
 This is a UI for a room booking web application, produced on [Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme). 
 
-## STEPS TO DEPLOY
+## Steps to deploy
 
 To deploy the UI, run:
 ```
@@ -13,8 +13,8 @@ To generate production build, run:
 ```
     npm build
 ```
-## TODOs
+## Todos
 
-1. Express select room
-2. URL link to calendar to include room name
-3. View list of rooms booked
+1. URL link to calendar to include room name
+2. View list of rooms booked
+3. Floor plan
