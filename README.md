@@ -2,6 +2,8 @@
 
 This is a UI for a room booking web application, built on [Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme). 
 
+[roombook-server](https://github.com/wenhongg/roombook-server)
+
 ## Steps
 To deploy the UI, run:
 ```
@@ -19,7 +21,7 @@ To generate production build, run:
 ### Current limitations
 
 1. Cannot book across days
-2. If decimal is input into duration form, it just rounds up
+2. If decimal is input into duration form, it just rounds up (intended)
 3. Rooms have no specifications i.e. can add to sort by size
 4. Shift more logic to server side?
 
