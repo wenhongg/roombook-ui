@@ -15,8 +15,25 @@ To generate production build, run:
     npm build
 ```
 
-## Todos (for both UI and server)
 
+
+
+
+# Overview of room booking project
+
+## Functionality
+
+### Express booking
+
+On the main page, there is a form for users to quickly choose a date and duration. This assumes that users are not concerned about which room (can possibly be further work). A list of rooms and intervals will appear and users can book immediately.
+
+### View specific room calendar
+
+If user selects to view full list, they are given the list of rooms and the current availabilites. can then click on a specific room and see the calendar for that day, and also other days. They can book from the CalendarPage.
+
+Calendar page can also be accessed by clicking the map.
+
+## Todos (for both UI and server)
 
 ### Current limitations
 
