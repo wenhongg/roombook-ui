@@ -1,6 +1,6 @@
-# Room booking UI
+# Room Booking UI
 
-This is a UI for a room booking web application, produced on [Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme). 
+This is a UI for a room booking web application, built on [Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme). 
 
 ## Steps
 To deploy the UI, run:
