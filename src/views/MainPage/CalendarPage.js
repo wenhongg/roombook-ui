@@ -23,9 +23,17 @@ const useStyles = makeStyles(styles);
 //calendar page will hold the information.
 export default function CalendarPage(props) {
   const classes = useStyles();
-  const [roomName, setRoomName] = useState(props.location.state.roomName);
-  const [date, setDate] = useState(props.location.state.date);
+  //const [roomName, setRoomName] = useState(props.location.state.roomName);
 
+  const [roomName, setRoomName] = useState(props.match.params.roomname);
+  const [date, setDate] = useState("");
+  useEffect(() => {
+    if(props.location.state!=null){
+      setDate(props.location.state.date);
+    }
+  }, []);
+
+  
   const [data, setData] = useState({});
 
   //get date today if no date was specified 

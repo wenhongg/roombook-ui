@@ -8,6 +8,7 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/typog
 
 //related imports
 import Booking from './Booking.js';
+
 import {getAllRoomData, getSearchResults, intToTime } from "./ExternalHandler.js";
 
 
@@ -59,13 +60,11 @@ export default function RoomList(props) {
       <div className={classes.section}>
         <div className={classes.container}>
           <div className={classes.space50} />
-          <div id="images">
             <div className={classes.title} >
               <h2>{titles[0]}</h2>
               <h3><i>{titles[1]}</i></h3>
             </div>
             {entries}
-          </div>
         </div>
       </div>
   );
@@ -109,6 +108,7 @@ function RoomTimeEntry(props){
 function RoomEntry(props){
   const [redirect, setRedirect] = useState(false);
 
+  let pathname = '/cal/' +props.data['roomName']
   let b = [];
   let text = [];
   if(!props.data['booked']){
@@ -118,7 +118,7 @@ function RoomEntry(props){
   }
 
   if(redirect){
-    return(<Redirect to={{ pathname: '/cal', state:{roomName: props.data['roomName'], date: ""}}} />);
+    return(<Redirect to={{ pathname: pathname, state:{roomName: props.data['roomName'], date: ""}}} />);
   };
 
   return (

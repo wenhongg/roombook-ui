@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import {Redirect} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "components/CustomButtons/Button.js";
 import Slide from "@material-ui/core/Slide";
@@ -47,9 +48,9 @@ export default function Booking(props) {
   const [warning, setWarning] = useState("");
 
   //Renders modal 
-  const [modal, setModal] = React.useState(false);
-  const [modalText, setModalText] = React.useState("Please wait...");
-  
+  const [modal, setModal] = useState(false);
+  const [modalText, setModalText] = useState("Please wait...");
+  const [redirect, setRedirect] = useState(false);
 
   //if props contain interval i.e. from express booking
   useEffect(()=>{
@@ -127,6 +128,10 @@ export default function Booking(props) {
     postRoomBooking(data)
     .then(text => setModalText(text));
   }
+
+  if(redirect){
+    return(<Redirect to={{ pathname: '/cal/'+props.roomName , state:{date: props.date}}} />);
+  };
 
   return (
     <div className={classes.container}>
@@ -206,7 +211,7 @@ export default function Booking(props) {
       ><h5>{modalText}</h5>
       </DialogContent>
       <DialogActions className={classes.modalFooter + " " + classes.modalFooterCenter}>
-        <Button onClick={() => setModal(false)}>Close</Button>
+        <Button onClick={() => {setModal(false); setRedirect(true);}}>Close</Button>
       </DialogActions>
     </Dialog>
     </div>

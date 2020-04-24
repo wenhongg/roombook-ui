@@ -25,7 +25,7 @@ ReactDOM.render(
       <Route path="/components" component={Components} />
 
       <Route path="/main" component={MainPage} />
-      <Route path="/cal" render={(props) => <CalendarPage {...props} set={false}/>}/>
+      <Route path="/cal/:roomname" render={(props) => <CalendarPage {...props} set={false}/>}/>
       <Redirect from="/" to="/main" />
     </Switch>
   </Router>,

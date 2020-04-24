@@ -20,6 +20,9 @@ import CardFooter from "components/Card/CardFooter.js";
 import RoomList from './RoomList.js';
 import Calendar from './Calendar.js';
 
+import Floorplan from './Floorplan.js';
+
+
 const useStyles = makeStyles(styles);
 
 //need to ensure duration is always a number and check that not empty
@@ -62,7 +65,8 @@ export default function MainPage(props) {
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Book a room quick.</h1>
-              <h4>Or instead:</h4>
+              <h3>Or scroll down to select from a list of rooms.</h3>
+              <h4>Or you can:</h4>
               <Button
                   color="danger"
                   size="lg"
@@ -105,9 +109,11 @@ export default function MainPage(props) {
           </GridContainer>
         </div>
       </Parallax>
-
       <div className={classNames(classes.main, classes.mainRaised)}>
+        
         {list}
+        <Floorplan />
+
       </div>
     </div>
   );
