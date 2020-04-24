@@ -2,8 +2,7 @@
 
 This is a UI for a room booking web application, produced on [Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme). 
 
-## Steps to deploy
-
+## Steps
 To deploy the UI, run:
 ```
     npm install
