@@ -17,11 +17,8 @@ import { getSingleRoomData } from './ExternalHandler.js';
 
 const useStyles = makeStyles(styles);
 
-//props.name , props.date
-
-//calendar page will hold the information.
+//Error page. Displayed upon fetch error
 export default function ErrorPage(props) {
-
   const classes = useStyles();
   return (
     <div>

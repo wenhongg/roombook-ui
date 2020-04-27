@@ -27,15 +27,15 @@ const useStyles = makeStyles(styles);
 
 //need to ensure duration is always a number and check that not empty
 export default function MainPage(props) {
+  const classes = useStyles();
   //states to store mainpage form data.
   const [duration, setDuration] = useState("");
   const [date, setDate] = useState("");
   const [warn, setWarn] = useState("");
+  
   //data put into list
   const [list, setList] = useState([]);
-  const classes = useStyles();
 
-  //onclick to process search
   function submitForm(){
     if(date=="" || isNaN(duration)){
       setWarn("Please select a valid date and duration (1-24).");
@@ -49,6 +49,7 @@ export default function MainPage(props) {
     setList(<RoomList date={date} duration={dur}/>)
     setWarn("");
   }
+
   return (
     <div>
       <Header

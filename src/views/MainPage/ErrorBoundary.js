@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//Not implemented but a useful side tool.
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);

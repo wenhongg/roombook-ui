@@ -14,16 +14,17 @@ import LoginPage from "views/LoginPage/LoginPage.js";
 import MainPage from "views/MainPage/MainPage.js";
 import CalendarPage from "views/MainPage/CalendarPage.js";
 
+/*
+      <Route path="/landing-page" component={LandingPage} />
+      <Route path="/profile-page" component={ProfilePage} />
+      <Route path="/login-page" component={LoginPage} />
+      <Route path="/components" component={Components} />
+*/
 var hist = createBrowserHistory();
 
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route path="/landing-page" component={LandingPage} />
-      <Route path="/profile-page" component={ProfilePage} />
-      <Route path="/login-page" component={LoginPage} />
-      <Route path="/components" component={Components} />
-
       <Route path="/main" component={MainPage} />
       <Route path="/cal/:roomname" render={(props) => <CalendarPage {...props} set={false}/>}/>
       <Redirect from="/" to="/main" />

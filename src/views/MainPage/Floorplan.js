@@ -32,4 +32,3 @@ export default function Floorplan(props){
       </div>
 	);
 }
-const data = [];

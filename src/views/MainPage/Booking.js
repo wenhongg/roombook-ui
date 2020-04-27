@@ -31,7 +31,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   EITHER data OR start and end 
 */
 export default function Booking(props) {
-
+  //provide a callback to rerender calendar page upon successful book
   var toggleCallBack = Function();
   if(props.callback!=null){
     toggleCallBack = props.callback;
@@ -109,7 +109,7 @@ export default function Booking(props) {
     }
   }, [start, props])
 
-  //check validity and submit
+  //check validity of input and submit
   function submitForm(){
     if(start==-1 || end==-1){
       setWarning("Please select start and end time.")
@@ -135,6 +135,7 @@ export default function Booking(props) {
     .then(text => setModalText(text));
   }
 
+  //redirect to view completed booking once successful.
   if(redirect){
     return(<Redirect to={{ pathname: '/cal/'+props.roomName , state:{date: props.date}}} />);
   };

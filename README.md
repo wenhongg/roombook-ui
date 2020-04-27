@@ -21,9 +21,13 @@ To generate production build, run:
 
 # Overview of room booking project
 
+All my code is in src/views/MainPage. Other folders in views are starter code from material UI.
+
 ## Assumptions
 
 1. People will book and use rooms in units of hours.
+2. No fixed list of authorized users (anyone can book, with name and contact)
+3. No limit on hours the room can be booked for.
 
 ## Functionality
 

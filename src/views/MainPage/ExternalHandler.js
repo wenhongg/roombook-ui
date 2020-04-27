@@ -3,6 +3,7 @@ const SEARCH_URL='http://localhost:8000/rooms';
 const PROXY_URL='https://cors-anywhere.herokuapp.com/';
 /*
 	Query functions:
+	throws error if status 400
 */
 
 export async function getSearchResults(date,duration){
