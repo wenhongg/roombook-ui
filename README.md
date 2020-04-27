@@ -21,6 +21,10 @@ To generate production build, run:
 
 # Overview of room booking project
 
+## Assumptions
+
+1. People will book and use rooms in units of hours.
+
 ## Functionality
 
 ### Express booking
@@ -39,8 +43,9 @@ Calendar page can also be accessed by clicking the map.
 
 1. Cannot book across days
 2. Rooms currently have no specifications i.e. can add to sort by size of room.
-3. Shift more logic to server side?
-4. Streamline error handling backend
+3. Cannot delete
+4. Shift more logic to server side?
+5. Unsure whether to set contact as email or phone number. No validation check currently (unless it is empty).
 
 ### Known bugs
 
