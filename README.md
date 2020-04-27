@@ -52,7 +52,6 @@ Calendar page can also be accessed by clicking the map.
 2. Rooms currently have no specifications i.e. can add to sort by size of room.
 3. Cannot delete
 4. Shift more logic to server side?
-5. Unsure whether to set contact as email or phone number. No validation check currently (unless it is empty).
 
 ### Known bugs
 
@@ -70,3 +69,6 @@ Calendar page can also be accessed by clicking the map.
 - Very simple way to get a server up and running: removes need for dealing directly with database
 - Clean design pattern, understandable
 
+## Other notes
+
+Heroku server sleeps after some inactivity; first connection might take slightly longer.

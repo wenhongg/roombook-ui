@@ -1,6 +1,6 @@
 
-const SEARCH_URL='https://aqueous-escarpment-75704.herokuapp.com/rooms'
-//const SEARCH_URL='http://localhost:8000/rooms';
+//const SEARCH_URL='https://aqueous-escarpment-75704.herokuapp.com/rooms'
+const SEARCH_URL='http://localhost:8000/rooms';
 const PROXY_URL='https://cors-anywhere.herokuapp.com/';
 /*
 	Query functions:
@@ -17,6 +17,18 @@ export async function getSearchResults(date,duration){
 		throw "Error 400";
 	}
 	return response["data"];
+}
+
+//data must have the keys: roomName, start, date, delete
+export async function deleteBooking(data){
+	let url_str = SEARCH_URL + "/deleteBooking";
+	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(data)});
+	response = await response.json();
+
+	if(response['status']!=200){
+		throw "Error 400";
+	}
+	return response["response"];
 }
 
 export async function getOverview(q){

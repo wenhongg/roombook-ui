@@ -112,14 +112,17 @@ export default function Booking(props) {
   //check validity of input and submit
   function submitForm(){
     if(start==-1 || end==-1){
-      setWarning("Please select start and end time.")
+      setWarning("Please select start and end time.");
       return;
     }
     if(booker=="" || contact==""){
-      setWarning("Please fill in both name and contact.")
+      setWarning("Please fill in both name and contact.");
       return;
     }
-
+    if(contact.length!=8 || isNaN(contact)){
+      setWarning("Please provide valid 8 digit phone number in contact.");
+      return;
+    }
     let data = {
       roomName: props.roomName,
       booker: booker,
@@ -179,7 +182,7 @@ export default function Booking(props) {
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
           <CustomInput
-            labelText="Contact"
+            labelText="Contact (8-Digit Phone Number)"
             id="float"
             formControlProps={{
               fullWidth: true

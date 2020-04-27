@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import styles from "assets/jss/material-kit-react/views/componentsSections/javascriptStyles.js";
-import { intToTime } from './ExternalHandler.js';
+import { intToTime, deleteBooking } from './ExternalHandler.js';
 const useStyles = makeStyles(styles);
 /*
   Timetable displays treated data. Set props.data
@@ -17,7 +17,7 @@ export default function Timetable(props) {
   let info = props.data;
   if(info!=null){
     for(i=0;i<info.length;i++){
-      entries.push(<TimeEntry id={i} data={info[i]} />);
+      entries.push(<TimeEntry id={i} data={info[i]} roomName={props.RoomName} date={props.date} />);
       entries.push(<hr style={{color: '#000000',backgroundColor: '#000000',height: .5}} />);
     }
   } else {
@@ -48,6 +48,18 @@ function TimeEntry(props){
   if(props.data['booker']==""){
     booker = (<b>AVAILABLE</b>);
   }
+
+  function deleteBook(){
+    var data = {
+      roomName : props.roomName,
+      start: props.data['start'],
+      date: props.date
+    }
+    //TODO in progress
+    deleteBooking(data)
+    .then(console.log(data))
+  }
+
   return (
     <GridContainer>
       <GridItem xs={12} sm={3}>
