@@ -30,7 +30,7 @@ All my code is in src/views/MainPage. Other folders in views are starter code fr
 
 1. People will book and use rooms in units of hours.
 2. No fixed list of authorized users (anyone can book, with name and contact)
-3. No limit on hours the room can be booked for.
+3. No limit on hours the room can be booked for (up to 24 hours - see limitation 1).
 
 ## Functionality
 
@@ -56,7 +56,7 @@ Calendar page can also be accessed by clicking the map.
 
 ### Known bugs
 
-1. Booking form disappears once booking is completed on the Calendar Page.
+1. Not sufficiently phone optimized; some elements overlap on small screens
 
 ## Stack chosen and why
 
