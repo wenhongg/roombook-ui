@@ -9,7 +9,7 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/typog
 //related imports
 import Booking from './Booking.js';
 
-import {getAllRoomData, getSearchResults, intToTime } from "./ExternalHandler.js";
+import {getOverview, getSearchResults, intToTime } from "./ExternalHandler.js";
 
 
 const useStyles = makeStyles(styles);
@@ -30,7 +30,7 @@ export default function RoomList(props) {
   //Get data from correct API
   useEffect(() => {
     if(props.full){
-      getAllRoomData().then(data => setData(data));
+      getOverview().then(data => setData(data));
       setTitles(["Full Room List:","Click to view room calendar."]);
     } else {
       getSearchResults(props.date, props.duration).then(data => setData(data));

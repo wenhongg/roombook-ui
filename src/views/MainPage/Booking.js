@@ -31,6 +31,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   EITHER data OR start and end 
 */
 export default function Booking(props) {
+
+  var toggleCallBack = Function();
+  if(props.callback!=null){
+    toggleCallBack = props.callback;
+  }
+
   const classes = useStyles();
   const [start, setStart] = useState(-1);
   const [end, setEnd] = useState(-1);
@@ -211,7 +217,7 @@ export default function Booking(props) {
       ><h5>{modalText}</h5>
       </DialogContent>
       <DialogActions className={classes.modalFooter + " " + classes.modalFooterCenter}>
-        <Button onClick={() => {setModal(false); setRedirect(true);}}>Close</Button>
+        <Button onClick={() => {setModal(false); setRedirect(true); toggleCallBack()}}>Close</Button>
       </DialogActions>
     </Dialog>
     </div>

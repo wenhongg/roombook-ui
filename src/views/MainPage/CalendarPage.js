@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "components/Header/Header.js";
-import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
@@ -15,6 +14,7 @@ import Timetable from './Timetable.js';
 import Booking from './Booking.js';
 import { getSingleRoomData } from './ExternalHandler.js';
 
+import ErrorPage from './ErrorPage.js';
 
 const useStyles = makeStyles(styles);
 
@@ -27,11 +27,20 @@ export default function CalendarPage(props) {
 
   const [roomName, setRoomName] = useState(props.match.params.roomname);
   const [date, setDate] = useState("");
+
+  const [fail, setFail] = useState(false);
+
+  const [callBack, setCallBack] = useState(false);
+  function toggleCallBack(){
+    setCallBack(!callBack);
+  }
+
   useEffect(() => {
     if(props.location.state!=null){
       setDate(props.location.state.date);
     }
   }, []);
+
 
   
   const [data, setData] = useState({});
@@ -53,9 +62,14 @@ export default function CalendarPage(props) {
   
   //updates room data only upon change in date, name
   useEffect(() => {
-    getSingleRoomData(roomName,date).then(info => setData(info));
+    getSingleRoomData(roomName,date).catch(()=> setFail(true)).then(info => setData(info));
     window.scrollTo(0, 0);
-  }, [roomName, date]);
+  }, [roomName, date, callBack]);
+
+
+  if(fail){
+    return(<ErrorPage />);
+  }
 
   return (
     <div>
@@ -80,9 +94,8 @@ export default function CalendarPage(props) {
           </GridItem>
         </GridContainer>
       </div>
-        <Booking roomName={roomName} date={date} data={data}/>
+        <Booking roomName={roomName} date={date} data={data} callback={toggleCallBack}/>
       </div>
-      <Footer />
     </div>
   );
 }

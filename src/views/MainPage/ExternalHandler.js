@@ -1,7 +1,6 @@
 
 const SEARCH_URL='http://localhost:8000/rooms';
-const PROXY_URL='https://cors-anywhere.herokuapp.com/'
-
+const PROXY_URL='https://cors-anywhere.herokuapp.com/';
 /*
 	Query functions:
 */
@@ -11,19 +10,23 @@ export async function getSearchResults(date,duration){
 	let obj = await {date: date, duration: duration}
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(obj)});
 	response = await response.json();
-	await console.log(response);
-	//response = await processData(date, response);
-	return response;
+
+	if(response['status']!=200){
+		throw "Error 400";
+	}
+	return response["data"];
 }
 
-export async function getAllRoomData(q){
+export async function getOverview(q){
 	//only GET. nothing supplied.
 	let url_str = SEARCH_URL + "/overview";
 	let response = await fetch(url_str);
 	response = await response.json();
 
-	await console.log(response)
-	return response;
+	if(response['status']!=200){
+		throw "Error 400";
+	}
+	return response["data"];
 }
 
 export async function postRoomBooking(data){
@@ -31,7 +34,10 @@ export async function postRoomBooking(data){
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(data)});
 	response = await response.json();
 	
-	return response['response'];
+	if(response['status']!=200){
+		throw "Error 400";
+	}
+	return response["response"];
 }
 
 export async function getSingleRoomData(room, date){
@@ -40,7 +46,14 @@ export async function getSingleRoomData(room, date){
 
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(obj)});
 	response = await response.json();
+
+	if(response['status']!=200){
+		throw "Error 400";
+	}
+
+	response = await response["data"];
 	response = await processData(date, response);
+
 	return response;
 }
 

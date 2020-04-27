@@ -35,17 +35,16 @@ Calendar page can also be accessed by clicking the map.
 
 ## Todos (for both UI and server)
 
-### Current limitations
+### Current limitations/Future Work
 
 1. Cannot book across days
-2. If decimal is input into duration form, it just rounds up (intended)
-3. Rooms have no specifications i.e. can add to sort by size
-4. Shift more logic to server side?
+2. Rooms currently have no specifications i.e. can add to sort by size of room.
+3. Shift more logic to server side?
+4. Streamline error handling backend
 
 ### Known bugs
 
-1. By manipulating URL users can access phantom rooms and book
-
+1. Booking form disappears once booking is completed on the Calendar Page.
 
 ## Stack chosen and why
 
