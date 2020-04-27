@@ -1,5 +1,6 @@
 
-const SEARCH_URL='http://localhost:8000/rooms';
+const SEARCH_URL='https://aqueous-escarpment-75704.herokuapp.com/rooms'
+//const SEARCH_URL='http://localhost:8000/rooms';
 const PROXY_URL='https://cors-anywhere.herokuapp.com/';
 /*
 	Query functions:

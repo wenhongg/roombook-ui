@@ -77,7 +77,7 @@ export default function MainPage(props) {
                   value="full"
               >Click for full list of rooms.</Button>
             </GridItem>
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={12} sm={12} md={6} style={{zIndex:10000}}>
               <Card>
                 <CardHeader color="warning">
                   <h3 className={classes.title}>Express booking</h3>

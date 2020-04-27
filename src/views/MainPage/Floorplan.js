@@ -12,10 +12,13 @@ export default function Floorplan(props){
   	//ensure map remains correct
   	function handleResize(){
 		let newAreas = [];
+		if(document.getElementById('floorimg')==null)
+			return;
 		let width = document.getElementById('floorimg').clientWidth;
 	
 		let i;
 		for(i=0;i<coords.length;i++){
+
 			let name = coords[i]['name'];
 			let cset = coords[i]['coords'];
 

@@ -95,9 +95,9 @@ function RoomTimeEntry(props){
       <GridItem xs={12} sm={3}>
         <h3><b>{roomName}</b></h3>
       </GridItem>
-      <GridItem xs={12} sm={3}><h3><b>{intToTime(start)}</b></h3></GridItem>
-      <GridItem xs={12} sm={3}><h3>to</h3></GridItem>
-      <GridItem xs={12} sm={3}><h3><b>{intToTime(end)}</b></h3></GridItem>
+      <GridItem xs={4} sm={3}><h3><b>{intToTime(start)}</b></h3></GridItem>
+      <GridItem xs={4} sm={3}><h3>to</h3></GridItem>
+      <GridItem xs={4} sm={3}><h3><b>{intToTime(end)}</b></h3></GridItem>
       {book}
     </GridContainer>
   );

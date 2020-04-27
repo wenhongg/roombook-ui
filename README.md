@@ -5,7 +5,7 @@ This is a UI for a room booking web application, built on [Material Kit React](h
 [roombook-server](https://github.com/wenhongg/roombook-server)
 
 ## Steps
-To deploy the UI, run:
+To start the UI, run:
 ```
     npm install
     npm start
@@ -13,11 +13,12 @@ To deploy the UI, run:
 To generate production build, run:
 ```
     npm build
+    serve -s build
 ```
-
-
-
-
+Deploy
+```
+	gcloud app deploy
+```
 
 # Overview of room booking project
 

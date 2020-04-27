@@ -135,6 +135,16 @@ export default function Booking(props) {
     .then(text => setModalText(text));
   }
 
+  function closeModal(){
+    setModal(false);
+    //redirect to same component seems to cause issue.
+    if(hide){
+      setRedirect(true);  
+    } else {
+      toggleCallBack();
+    }
+  }
+
   //redirect to view completed booking once successful.
   if(redirect){
     return(<Redirect to={{ pathname: '/cal/'+props.roomName , state:{date: props.date}}} />);
@@ -218,7 +228,7 @@ export default function Booking(props) {
       ><h5>{modalText}</h5>
       </DialogContent>
       <DialogActions className={classes.modalFooter + " " + classes.modalFooterCenter}>
-        <Button onClick={() => {setModal(false); setRedirect(true); toggleCallBack()}}>Close</Button>
+        <Button onClick={closeModal}>Close</Button>
       </DialogActions>
     </Dialog>
     </div>
