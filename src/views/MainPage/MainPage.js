@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 // material ui imports
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import Header from "components/Header/Header.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -61,13 +62,17 @@ export default function MainPage(props) {
           color: "info"
         }}
       />
-      <Parallax image={require("assets/img/bg6.jpg")}>
+      <Parallax image={require("assets/img/bg6.jpg")} style={{height:1000}}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Book a room quick.</h1>
+            
+            <Box item display={{ xs: "none", sm:"block" ,md:"block", lg: "block" }}>
               <h3>Or scroll down to select from a list of rooms.</h3>
               <h4>Or you can:</h4>
+
+            </Box>
               <Button
                   color="danger"
                   size="lg"
@@ -77,6 +82,7 @@ export default function MainPage(props) {
                   value="full"
               >Click for full list of rooms.</Button>
             </GridItem>
+
             <GridItem xs={12} sm={12} md={6} style={{zIndex:10000}}>
               <Card>
                 <CardHeader color="warning">
@@ -110,7 +116,7 @@ export default function MainPage(props) {
           </GridContainer>
         </div>
       </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
+      <div className={classNames(classes.main, classes.mainRaised)} style={{top:0}}>
         
         {list}
         <Floorplan />

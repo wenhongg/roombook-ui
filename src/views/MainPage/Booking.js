@@ -46,7 +46,11 @@ export default function Booking(props) {
   const [starts, setStarts] = useState([]);
   const [ends, setEnds] = useState([]);
   function childSetStart(str){ setStart(parseInt(str)/100);}
-  function childSetEnd(str){ setEnd(parseInt(str)/100);}
+  function childSetEnd(str){ 
+    let c = parseInt(str)/100;
+    if(c==0){c+=24;}
+    setEnd(c);
+  }
 
   //Get final details from user
   const [booker, setBooker] = useState("");
