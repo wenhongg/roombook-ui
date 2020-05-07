@@ -22,7 +22,7 @@ import RoomList from './RoomList.js';
 import Calendar from './Calendar.js';
 
 import Floorplan from './Floorplan.js';
-
+import ServerWake from './ServerWake.js';
 
 const useStyles = makeStyles(styles);
 
@@ -120,7 +120,7 @@ export default function MainPage(props) {
         
         {list}
         <Floorplan />
-
+        <ServerWake />
       </div>
     </div>
   );
