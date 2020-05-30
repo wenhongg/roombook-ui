@@ -1,3 +1,13 @@
+### Why not npm install?
+
+According to the issues on material-kit-react's repository, there are issues with installing the product using npm.
+
+[Link 1](https://github.com/creativetimofficial/material-kit-react/issues/71)
+[Link 2](https://github.com/creativetimofficial/ct-material-dashboard-pro-react/issues/50#issuecomment-407030675)
+
+As such, the recommended usage is to download a zip file (of the repository) through the website or clone the repository directly.
+
+
 # Room Booking UI
 
 This is a UI for a room booking web application, built on [Material Kit React](https://demos.creative-tim.com/material-kit-react/#/?ref=mkr-readme). 

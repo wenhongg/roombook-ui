@@ -1,7 +1,7 @@
 import React, {useState ,useRef, useEffect} from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import styles from "assets/jss/material-kit-react/views/componentsSections/typographyStyle.js";
+import styles from "@material-kit-react/views/componentsSections/typographyStyle.js";
 const useStyles = makeStyles(styles);
 
 //hard coded floorplan .. can explore possibility of shifting to server side?
