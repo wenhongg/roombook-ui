@@ -9,12 +9,14 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
+import Close from "@material-ui/icons/Close";
+
+import CustomInput from "components/CustomInput/CustomInput.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+
 import styles from "assets/jss/material-kit-react/views/componentsSections/javascriptStyles.js";
 
-import Close from "@material-ui/icons/Close";
-import CustomInput from "components/CustomInput/CustomInput.js";
 import CustomDropdown from './CustomDropdown.js';
 
 import { postRoomBooking, intToTime } from './ExternalHandler.js';

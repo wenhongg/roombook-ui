@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "components/Header/Header.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
-
-//related
-import Calendar from './Calendar.js';
-import Timetable from './Timetable.js';
-import Booking from './Booking.js';
-import { getSingleRoomData } from './ExternalHandler.js';
-
 
 const useStyles = makeStyles(styles);
 
@@ -23,11 +14,10 @@ export default function ErrorPage(props) {
   return (
     <div>
       <Header
-        brand="Room Booking App"
+        brand="RoomBook"
         fixed
         color="info"
       />
-      
       <div className={classNames(classes.main)} style={{ paddingTop: 500, paddingBottom: 500}}>
         <div className={classes.container}>
           <h2>Something went wrong.</h2>

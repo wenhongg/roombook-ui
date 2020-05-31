@@ -18,11 +18,10 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 //related
-import RoomList from './RoomList.js';
-import Calendar from './Calendar.js';
-
-import Floorplan from './Floorplan.js';
-import ServerWake from './ServerWake.js';
+import RoomList from './MainPage/RoomList.js';
+import Floorplan from './MainPage/Floorplan.js';
+import ServerWake from './MainPage/ServerWake.js';
+import Calendar from './shared/Calendar.js';
 
 const useStyles = makeStyles(styles);
 
@@ -54,7 +53,7 @@ export default function MainPage(props) {
   return (
     <div>
       <Header
-        brand="Room Booking App"
+        brand="RoomBook"
         fixed
         color="transparent"
         changeColorOnScroll={{

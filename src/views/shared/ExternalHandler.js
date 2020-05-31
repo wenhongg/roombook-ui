@@ -1,14 +1,23 @@
 
-const SEARCH_URL='https://aqueous-escarpment-75704.herokuapp.com/rooms'
-//const SEARCH_URL='http://localhost:8000/rooms';
+//const SEARCH_URL='https://aqueous-escarpment-75704.herokuapp.com/rooms/'
+const SEARCH_URL='http://localhost:8000/rooms/';
 const PROXY_URL='https://cors-anywhere.herokuapp.com/';
+
 /*
 	Query functions:
 	throws error if status 400
 */
+export async function quickPing(){
+	let url_str = SEARCH_URL;
+	let response = await fetch(url_str);
+	if(response['status']!=200){
+		throw "Error 400";
+	}
+	return true;
+}
 
 export async function getSearchResults(date,duration){
-	let url_str = SEARCH_URL + "/search";
+	let url_str = SEARCH_URL + "search";
 	let obj = await {date: date, duration: duration}
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(obj)});
 	response = await response.json();
@@ -21,7 +30,7 @@ export async function getSearchResults(date,duration){
 
 //data must have the keys: roomName, start, date, delete
 export async function deleteBooking(data){
-	let url_str = SEARCH_URL + "/deleteBooking";
+	let url_str = SEARCH_URL + "deleteBooking";
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(data)});
 	response = await response.json();
 
@@ -33,7 +42,7 @@ export async function deleteBooking(data){
 
 export async function getOverview(q){
 	//only GET. nothing supplied.
-	let url_str = SEARCH_URL + "/overview";
+	let url_str = SEARCH_URL + "overview";
 	let response = await fetch(url_str);
 	response = await response.json();
 
@@ -44,7 +53,7 @@ export async function getOverview(q){
 }
 
 export async function postRoomBooking(data){
-	let url_str = SEARCH_URL + "/placeBooking";
+	let url_str = SEARCH_URL + "placeBooking";
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(data)});
 	response = await response.json();
 	
@@ -55,7 +64,7 @@ export async function postRoomBooking(data){
 }
 
 export async function getSingleRoomData(room, date){
-	let url_str = SEARCH_URL + "/getRoomData";
+	let url_str = SEARCH_URL + "getRoomData";
 	let obj = await {room: room, date: date}
 
 	let response = await fetch(url_str, {method: 'POST', body: JSON.stringify(obj)});

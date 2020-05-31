@@ -6,14 +6,12 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import styles from "assets/jss/material-kit-react/views/componentsSections/typographyStyle.js";
 
-//related imports
-import Booking from './Booking.js';
-
-import {getOverview, getSearchResults, intToTime } from "./ExternalHandler.js";
+//self produced components
+import Booking from '../shared/Booking.js';
+import {getOverview, getSearchResults, intToTime } from "../shared/ExternalHandler.js";
 
 
 const useStyles = makeStyles(styles);
-
 /*
   Room list component: can display list of rooms OR list of possible timeslots
 

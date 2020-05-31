@@ -8,22 +8,19 @@ import GridItem from "components/Grid/GridItem.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
-//related
-import Calendar from './Calendar.js';
-import Timetable from './Timetable.js';
-import Booking from './Booking.js';
-import { getSingleRoomData } from './ExternalHandler.js';
-
+//Self produced components
+import Timetable from './CalendarPage/Timetable.js';
+import Calendar from './shared/Calendar.js';
+import Booking from './shared/Booking.js';
 import ErrorPage from './ErrorPage.js';
+import { getSingleRoomData } from './shared/ExternalHandler.js';
 
 const useStyles = makeStyles(styles);
 
 //props.name , props.date
-
 //calendar page will hold the information.
 export default function CalendarPage(props) {
   const classes = useStyles();
-  //const [roomName, setRoomName] = useState(props.location.state.roomName);
 
   const [roomName, setRoomName] = useState(props.match.params.roomname);
   const [date, setDate] = useState("");
@@ -74,7 +71,7 @@ export default function CalendarPage(props) {
   return (
     <div>
       <Header
-        brand="Room Booking App"
+        brand="RoomBook"
         fixed
         color="info"
       />

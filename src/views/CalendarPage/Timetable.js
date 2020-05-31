@@ -4,8 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import styles from "assets/jss/material-kit-react/views/componentsSections/javascriptStyles.js";
-import { intToTime, deleteBooking } from './ExternalHandler.js';
+
+import { intToTime, deleteBooking } from '../shared/ExternalHandler.js';
 const useStyles = makeStyles(styles);
+
 /*
   Timetable displays treated data. Set props.data
 */
@@ -49,6 +51,7 @@ function TimeEntry(props){
     booker = (<b>AVAILABLE</b>);
   }
 
+  //deletion under development
   function deleteBook(){
     var data = {
       roomName : props.roomName,

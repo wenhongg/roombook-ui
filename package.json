@@ -42,6 +42,7 @@
   "scripts": {
     "start": "serve -s build",
     "build": "react-scripts build",
+    "view" : "react-scripts start",
     "test": "react-scripts start",
     "eject": "react-scripts eject",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",
